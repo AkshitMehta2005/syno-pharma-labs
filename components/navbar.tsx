@@ -110,7 +110,9 @@ export function Navbar() {
                   className="mt-4"
                   onClick={() => {
                     setMobileOpen(false);
-                    document.querySelector("#contact")?.scrollIntoView({ behavior: "smooth" });
+                    setTimeout(() => {
+                      document.querySelector("#contact")?.scrollIntoView({ behavior: "smooth" });
+                    }, 250);
                   }}
                 >
                   Enquire Now

@@ -1,7 +1,8 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Plus_Jakarta_Sans } from "next/font/google";
 import "./globals.css";
 import { Providers } from "@/components/providers";
+import { siteConfig } from "@/lib/site";
 
 const plusJakartaSans = Plus_Jakarta_Sans({
   subsets: ["latin"],
@@ -10,22 +11,52 @@ const plusJakartaSans = Plus_Jakarta_Sans({
 });
 
 export const metadata: Metadata = {
-  title: "Syno Pharma | Ethical, Evidence-Based Healthcare Solutions",
-  description:
-    "Syno Pharma Laboratories Pvt. Ltd. — trusted pharmaceutical partner in gastroenterology, hepatology and nutrition. Quality, ethics and patient care first.",
-  authors: [{ name: "Syno Pharma Laboratories Private Limited" }],
+  metadataBase: new URL(siteConfig.url),
+  title: {
+    default: siteConfig.title,
+    template: `%s | ${siteConfig.name}`,
+  },
+  description: siteConfig.description,
+  applicationName: siteConfig.name,
+  keywords: siteConfig.keywords,
+  authors: [{ name: siteConfig.legalName, url: siteConfig.url }],
+  creator: siteConfig.legalName,
+  publisher: siteConfig.legalName,
+  category: "Pharmaceuticals",
+  alternates: {
+    canonical: "/",
+  },
   openGraph: {
-    title: "Syno Pharma | Ethical, Evidence-Based Healthcare Solutions",
-    description:
-      "Syno Pharma Laboratories Pvt. Ltd. — trusted pharmaceutical partner in gastroenterology, hepatology and nutrition. Quality, ethics and patient care first.",
     type: "website",
+    url: "/",
+    siteName: siteConfig.name,
+    locale: "en_IN",
+    title: siteConfig.title,
+    description: siteConfig.description,
   },
   twitter: {
     card: "summary_large_image",
+    title: siteConfig.title,
+    description: siteConfig.description,
   },
-  icons: {
-    icon: "/favicon.png",
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+      "max-video-preview": -1,
+    },
   },
+  formatDetection: {
+    telephone: false,
+  },
+};
+
+export const viewport: Viewport = {
+  themeColor: "#ffffff",
 };
 
 export default function RootLayout({
@@ -34,7 +65,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={plusJakartaSans.variable}>
+    <html lang="en-IN" className={plusJakartaSans.variable}>
       <body>
         <Providers>{children}</Providers>
       </body>

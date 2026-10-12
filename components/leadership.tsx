@@ -29,13 +29,16 @@ const message = [
 
 export function Leadership() {
   return (
-    <section className="py-20 lg:py-28">
+    <section id="leadership" aria-labelledby="leadership-heading" className="scroll-mt-24 py-20 lg:py-28">
       <div className="mx-auto grid max-w-7xl items-start gap-12 px-4 sm:px-6 lg:grid-cols-2 lg:px-8">
         <Reveal>
           <span className="inline-flex items-center rounded-full border border-primary/15 bg-accent px-3 py-1 text-xs font-semibold uppercase tracking-[0.14em] text-accent-foreground">
             Leadership
           </span>
-          <h2 className="mt-4 text-3xl font-extrabold leading-tight text-foreground sm:text-4xl">
+          <h2
+            id="leadership-heading"
+            className="mt-4 text-3xl font-extrabold leading-tight text-foreground sm:text-4xl"
+          >
             Message from Our Managing Directors
           </h2>
           <figure className="mt-6 rounded-3xl border border-border bg-secondary/60 p-6 shadow-soft sm:p-8">

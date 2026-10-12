@@ -4,9 +4,6 @@ import { motion } from "motion/react";
 import { Activity, HeartHandshake, ShieldCheck, Sparkles } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
-import heroImgAsset from "@/assets/hero-lab.jpg";
-
-const heroImgSrc = typeof heroImgAsset === "string" ? heroImgAsset : heroImgAsset.src;
 
 const stats = [
   { icon: ShieldCheck, title: "100% Quality & Ethics", note: "Compliant, audited manufacturing" },
@@ -19,8 +16,8 @@ export function Hero() {
     <section id="home" className="relative overflow-hidden bg-hero-glow pt-28 pb-16 sm:pt-32 lg:pb-20">
       <div className="mx-auto grid max-w-7xl items-center gap-14 px-4 sm:px-6 lg:grid-cols-2 lg:gap-10 lg:px-8">
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
+          initial={{ y: 20 }}
+          animate={{ y: 0 }}
           transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
         >
           <span className="inline-flex items-center gap-2 rounded-full border border-primary/15 bg-accent px-3 py-1.5 text-xs font-semibold uppercase tracking-[0.14em] text-accent-foreground">
@@ -60,16 +57,17 @@ export function Hero() {
 
         <motion.div
           className="relative"
-          initial={{ opacity: 0, y: 26 }}
-          animate={{ opacity: 1, y: 0 }}
+          initial={{ y: 26 }}
+          animate={{ y: 0 }}
           transition={{ duration: 0.8, delay: 0.15, ease: [0.22, 1, 0.36, 1] }}
         >
           <div className="overflow-hidden rounded-3xl border border-border shadow-lift">
             <img
-              src={heroImgSrc}
-              alt="Pharmaceutical researcher inspecting a vial in a clean laboratory"
-              width={1280}
-              height={1024}
+              src="/hero-banner.png"
+              alt="Smiling doctor with a stethoscope in front of healthcare colleagues"
+              width={668}
+              height={561}
+              fetchPriority="high"
               className="h-full w-full object-cover"
             />
           </div>
